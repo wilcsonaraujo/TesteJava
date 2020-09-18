@@ -19,42 +19,66 @@ public class Lista {
 		return list;		
 	}
 	
-	public Lista remover(Lista list, String chave) {
+	public Lista remover(Lista list, int index) {
 		No pNode = list.cabeca, prev = null;
 		
-		if(pNode != null && pNode.getValor() == chave) {
+		if(index == 0 && pNode != null) {
 			list.cabeca = pNode.getProximo();
 			
-			System.out.println(chave + " Item Removido!");
+			System.out.println("Item Removido!");
 			
 			return list;
 		}
 		
-		while(pNode != null && pNode.getValor() != chave){
-			prev = pNode;
-			pNode = pNode.getProximo();
+		int cont = 0;
+		
+		while(pNode != null){
+			if(cont == index) {
+				prev.setProximo(pNode.getProximo());
+				
+				System.out.println("Item Removido!");
+				break;
+			}else {
+				prev = pNode;
+				pNode = pNode.getProximo();
+				cont++;
+			}
+			
 		}
 		
-		if(pNode != null) {
-			prev.setProximo(pNode.getProximo());
-			
-			System.out.println(chave + " Item Removido!");
-		}
 		if(pNode == null) {
-			System.out.println(chave + " Item não existe!");
+			System.out.println("Item inexistente!");
 		}
 		
 		return list;
 	}
 	
-	public Lista concluir(Lista list, String chave) {
+	public Lista concluir(Lista list, int index) {
 		No pNode = list.cabeca;
 		
-		while(pNode.getValor() == chave) {
+		if(index == 0 && pNode != null) {
 			pNode.setStatus("Concluído");
 			return list;
 		}
 		
+		int cont = 0;
+		
+		while(pNode != null){
+			if(cont == index) {
+				pNode.setStatus("Concluído");
+
+				break;
+			}else {
+				pNode.setStatus("Concluído");
+				cont++;
+			}
+			
+		}
+		
+		if(pNode == null) {
+			System.out.println("Item inexistente!");
+		}
+
 		return list;
 	}
 	

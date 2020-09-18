@@ -1,34 +1,36 @@
+import java.util.Scanner;
 
 public class ListTarefas {
 
 	public static void main(String[] args) {
-		No no1 = new No();
-		No no2 = new No();
-		No no3 = new No();
-		No no4 = new No();
-		
-		no1.setValor("hoje");
-		no2.setValor("Amanhã");
-		no3.setValor("Domingo");
-		no4.setValor("Final de semana");
-		
+		Scanner sc = new Scanner(System.in);
 		Lista listTest = new Lista();
+		No no = new No();
+		int opcao = 0;
 		
-		listTest.inserir(listTest, no1.getValor());
-		listTest.inserir(listTest, no2.getValor());
-		listTest.inserir(listTest, no3.getValor());
-		listTest.inserir(listTest, no4.getValor());
+		do{
+			System.out.println("Digite 0-Sair, 1-Adicionar, 2-excluir, 3-Concluir Tarefa e 4-Imprimir:");
+			opcao = sc.nextInt();
 		
-		listTest.print(listTest);
-		
-		listTest.remover(listTest, no3.getValor());
-		
-		listTest.print(listTest);
-		
-		listTest.concluir(listTest, no1.getValor());
-		
-		listTest.print(listTest);
-		
+
+			if(opcao == 1) {
+				System.out.println("Digite uma tarefa: ");
+				no.setValor(sc.next());
+				listTest.inserir(listTest, no.getValor());
+			}if(opcao == 2) {
+				System.out.println("Digite uma tarefa: ");
+				int valor = sc.nextInt();
+				listTest.remover(listTest, valor);
+			}if(opcao == 3) {
+				System.out.println("Digite uma tarefa: ");
+				int valor = sc.nextInt();
+				listTest.concluir(listTest,valor);
+			}if(opcao == 4) {
+				listTest.print(listTest);
+			}
+
+		}while(opcao != 0);
+
 	}
 
 }

@@ -25,6 +25,10 @@ public class ListTarefas {
 		
 		listTest.print(listTest);
 		
+		listTest.concluir(listTest, no1.getValor());
+		
+		listTest.print(listTest);
+		
 	}
 
 }

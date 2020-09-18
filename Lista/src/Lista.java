@@ -1,4 +1,3 @@
-
 public class Lista {
 	No cabeca;
 	
@@ -48,13 +47,24 @@ public class Lista {
 		return list;
 	}
 	
+	public Lista concluir(Lista list, String chave) {
+		No pNode = list.cabeca;
+		
+		while(pNode.getValor() == chave) {
+			pNode.setStatus("Concluído");
+			return list;
+		}
+		
+		return list;
+	}
+	
 	public void print(Lista list) {
 		No pNode = list.cabeca;
 		
 		System.out.println("Lista: ");
 		
 		while (pNode != null) {
-			System.out.println(pNode.getValor() + " ");
+			System.out.println(pNode.getValor() + " " + pNode.getStatus());
 			
 			pNode = pNode.getProximo();
 		}

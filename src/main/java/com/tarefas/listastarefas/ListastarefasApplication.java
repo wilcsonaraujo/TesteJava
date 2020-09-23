@@ -8,12 +8,6 @@ import java.util.TimeZone;
 
 @SpringBootApplication
 public class ListastarefasApplication {
-
-	@PostConstruct
-	void started() {
-		TimeZone.setDefault(TimeZone.getTimeZone("TimeZone"));
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(ListastarefasApplication.class, args);
 	}

@@ -1,3 +1,4 @@
+import { data } from 'jquery';
 import React, { Component } from 'react';
 import TarefaService from '../services/TarefaService';
 
@@ -9,6 +10,7 @@ class ListTarefasComponent extends Component {
         }
         this.addTarefa = this.addTarefa.bind(this);
         this.updateTarefa = this.updateTarefa.bind(this);
+        this.updateStatus = this.updateStatus.bind(this);
         this.deleteTarefa = this.deleteTarefa.bind(this);
     }
 
@@ -24,6 +26,9 @@ class ListTarefasComponent extends Component {
 
     updateTarefa(id){
         this.props.history.push(`/update_tarefa/${id}`);
+    }
+    updateStatus(id){
+        this.props.history.push(`/tarefas/${id}`);
     }
 
     deleteTarefa(id){
@@ -53,7 +58,18 @@ class ListTarefasComponent extends Component {
                             this.state.tarefa.map(
                                 (tarefa, index) => 
                                 <tr key = {index}>
-                                    <td><input type="checkbox" name="name1" /></td>
+                                    <th scope="row">
+                                        <input onChange={(event) =>{
+                                            let checked = event.target.checked;
+                                            this.setState(this.state.tarefa.map((res) => {
+                                                if(tarefa.id ===  res.id){
+                                                    res.select=true;
+                                                    res.status="Concluído";
+                                                    
+                                                }
+                                            }));
+                                        }} type="checkbox" value={this.state.tarefa.status} checked={tarefa.select}></input>
+                                    </th>
                                     <td>{tarefa.tarefa}</td>
                                     <td>{tarefa.status}</td>
                                     <td><button onClick={() => this.updateTarefa(tarefa.id)} className="btn btn-info">Editar</button>
@@ -65,7 +81,6 @@ class ListTarefasComponent extends Component {
                         </tbody>
                     </table>
                 </div>
-
             </div>
         );
     }

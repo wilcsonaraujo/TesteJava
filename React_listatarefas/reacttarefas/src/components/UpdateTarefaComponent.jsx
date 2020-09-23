@@ -15,7 +15,7 @@ class UpdateTarefaComponent extends Component {
     changeTarefaHandle=(event) => {
         this.setState({tarefa: event.target.value});
     }
-
+    
     updateTarefa = (e) => {
         e.preventDefault();
         let tarefa = {tarefa: this.state.tarefa}
@@ -25,14 +25,14 @@ class UpdateTarefaComponent extends Component {
             this.props.history.push('/tarefas');
         });
     }
-
+    
 
     cancel(){
         this.props.history.push('/tarefas');
     }
 
     componentDidMount(){
-        TarefaService.getTarefaByd(this.state.id).then( (res) => {
+        TarefaService.getTarefaById(this.state.id).then( (res) => {
             let tarefa = res.data;
             this.setState({tarefa: tarefa.tarefa});
         });

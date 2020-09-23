@@ -6,6 +6,7 @@ import ListTarefasComponent from './components/ListTarefasComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import CreateTarefaComponent from './components/CreateTarefaComponent';
+import UpdateTarefaComponent from './components/UpdateTarefaComponent';
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <Router>
         <HeaderComponent/>
             <div className="container">
-              <Switch> 
+              <Switch>
                   <Route path = "/" exact component={ListTarefasComponent}></Route>
                   <Route path = "/tarefas" component={ListTarefasComponent}></Route>
                   <Route path = "/add_tarefa" component={CreateTarefaComponent}></Route>
+                  <Route path = "/update_tarefa/:id" component={UpdateTarefaComponent}></Route>
                   <ListTarefasComponent/>
               </Switch>
             </div>

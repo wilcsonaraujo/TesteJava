@@ -11,6 +11,18 @@ class TarefaService{
     createTarefa(tarefa){
         return axios.post(TAREFAS_API_BASE_URL, tarefa);
     }
+
+    getTarefaByd(tarefaId){
+        return axios.get(TAREFAS_API_BASE_URL + '/' + tarefaId);
+    }
+
+    updateTarefa(tarefa, tarefaId){
+        return axios.put(TAREFAS_API_BASE_URL + '/' + tarefaId, tarefa);
+    }
+
+    deleteTarefa(tarefaId){
+        return axios.delete(TAREFAS_API_BASE_URL + '/' + tarefaId);
+    }
 }
 
 export default new TarefaService()
